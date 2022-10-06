@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		85FA9D0428EF35B4006F4692 /* FlashcardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA9D0328EF35B4006F4692 /* FlashcardsApp.swift */; };
-		85FA9D0628EF35B4006F4692 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA9D0528EF35B4006F4692 /* ContentView.swift */; };
+		85FA9D0628EF35B4006F4692 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA9D0528EF35B4006F4692 /* FlashcardView.swift */; };
 		85FA9D0828EF35B5006F4692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85FA9D0728EF35B5006F4692 /* Assets.xcassets */; };
 		85FA9D0B28EF35B5006F4692 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85FA9D0A28EF35B5006F4692 /* Preview Assets.xcassets */; };
+		85FA9D1228EF3713006F4692 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA9D1128EF3713006F4692 /* Flashcard.swift */; };
+		85FA9D1428EF39F2006F4692 /* FlashcardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA9D1328EF39F2006F4692 /* FlashcardStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		85FA9D0028EF35B4006F4692 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FA9D0328EF35B4006F4692 /* FlashcardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsApp.swift; sourceTree = "<group>"; };
-		85FA9D0528EF35B4006F4692 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		85FA9D0528EF35B4006F4692 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		85FA9D0728EF35B5006F4692 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85FA9D0A28EF35B5006F4692 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		85FA9D1128EF3713006F4692 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		85FA9D1328EF39F2006F4692 /* FlashcardStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +56,9 @@
 			isa = PBXGroup;
 			children = (
 				85FA9D0328EF35B4006F4692 /* FlashcardsApp.swift */,
-				85FA9D0528EF35B4006F4692 /* ContentView.swift */,
+				85FA9D0528EF35B4006F4692 /* FlashcardView.swift */,
+				85FA9D1128EF3713006F4692 /* Flashcard.swift */,
+				85FA9D1328EF39F2006F4692 /* FlashcardStore.swift */,
 				85FA9D0728EF35B5006F4692 /* Assets.xcassets */,
 				85FA9D0928EF35B5006F4692 /* Preview Content */,
 			);
@@ -137,7 +143,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85FA9D0628EF35B4006F4692 /* ContentView.swift in Sources */,
+				85FA9D1428EF39F2006F4692 /* FlashcardStore.swift in Sources */,
+				85FA9D1228EF3713006F4692 /* Flashcard.swift in Sources */,
+				85FA9D0628EF35B4006F4692 /* FlashcardView.swift in Sources */,
 				85FA9D0428EF35B4006F4692 /* FlashcardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
