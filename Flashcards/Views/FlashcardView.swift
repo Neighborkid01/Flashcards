@@ -13,16 +13,17 @@ struct FlashcardView: View {
     @State private var deckData = FlashcardDeck.Data()
     @State private var cardData = Flashcard.Data()
     @State private var isPresentingEditView = false
-    
-    var index = 0
+    @State private var index = 0
+
     var body: some View {
         ZStack {
             flashcardDeck.flashcards[index].backgroundColorForCurrentFace().ignoresSafeArea()
             VStack {
                 Text(flashcardDeck.flashcards[index].textForCurrentFace())
-                    .frame(width: 400, height: 400)
+                    .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
                     .font(.system(size: 40))
                     .foregroundColor(flashcardDeck.flashcards[index].textColorForCurrentFace())
+
             }
             .contentShape(Rectangle())
             .padding()
@@ -30,6 +31,18 @@ struct FlashcardView: View {
                 flashcardDeck.flashcards[index].toggleState()
             }
         }
+        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .onEnded({ value in
+                print(value.translation)
+                if value.translation.width < 0 {
+                    index += 1
+                    if index >= flashcardDeck.flashcards.count { index = flashcardDeck.flashcards.count - 1 }
+                }
+                if value.translation.width > 0 {
+                    index -= 1
+                    if index < 0 { index = 0 }
+                }
+            }))
         .toolbar {
             Button("Edit") {
                 isPresentingEditView = true
