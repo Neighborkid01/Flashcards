@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class FlashcardStore: ObservableObject {
-    @Published var flashcards: [Flashcard] = []
+    @Published var flashcardDecks: [FlashcardDeck] = []
     
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
@@ -19,7 +19,7 @@ class FlashcardStore: ObservableObject {
         .appendingPathComponent("flashcards.data")
     }
     
-    static func load(completion: @escaping (Result<[Flashcard], Error>)->Void) {
+    static func load(completion: @escaping (Result<[FlashcardDeck], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let fileURL = try fileURL()
@@ -29,9 +29,9 @@ class FlashcardStore: ObservableObject {
                     }
                     return
                 }
-                let flashcards = try JSONDecoder().decode([Flashcard].self, from: file.availableData)
+                let flashcardDecks = try JSONDecoder().decode([FlashcardDeck].self, from: file.availableData)
                 DispatchQueue.main.async {
-                    completion(.success(flashcards))
+                    completion(.success(flashcardDecks))
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -41,14 +41,14 @@ class FlashcardStore: ObservableObject {
         }
     }
     
-    static func save(flashcards: [Flashcard], completion: @escaping (Result<Int, Error>)->Void) {
+    static func save(flashcardDecks: [FlashcardDeck], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
-                let data = try JSONEncoder().encode(flashcards)
+                let data = try JSONEncoder().encode(flashcardDecks)
                 let outfile = try fileURL()
                 try data.write(to: outfile)
                 DispatchQueue.main.async {
-                    completion(.success(flashcards.count))
+                    completion(.success(flashcardDecks.count))
                 }
             } catch {
                 DispatchQueue.main.async {

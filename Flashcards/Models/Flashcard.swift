@@ -13,14 +13,22 @@ enum FlashcardState: Codable {
     case back
 }
 
-struct Flashcard: Codable {
+struct Flashcard: Identifiable, Codable {
+    let id: UUID
     var front: String
     var back: String
     var state = FlashcardState.front
     
-    init(front: String, back: String) {
+    init(id: UUID = UUID(), front: String, back: String) {
+        self.id = id
         self.front = front
         self.back = back
+    }
+    
+    init(id: UUID = UUID(), data: Flashcard.Data) {
+        self.id = id
+        self.front = data.front
+        self.back = data.back
     }
     
     func textForCurrentFace() -> String {
@@ -41,6 +49,17 @@ struct Flashcard: Codable {
     
     mutating func setState(newState: FlashcardState) {
         state = newState
+    }
+}
+
+extension Flashcard {
+    struct Data {
+        var front: String = ""
+        var back: String = ""
+    }
+    
+    var data: Data {
+        Data(front: front, back: back)
     }
 }
 

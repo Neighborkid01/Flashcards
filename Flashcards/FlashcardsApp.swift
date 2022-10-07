@@ -12,20 +12,22 @@ struct FlashcardsApp: App {
     @StateObject private var store = FlashcardStore()
     var body: some Scene {
         WindowGroup {
-            FlashcardView(flashcards: $store.flashcards) {
-                FlashcardStore.save(flashcards: store.flashcards) { result in
-                    if case .failure(let error) = result {
-                        fatalError(error.localizedDescription)
+            NavigationView {
+                FlashcardDeckListView(flashcardDecks: $store.flashcardDecks) {
+                    FlashcardStore.save(flashcardDecks: store.flashcardDecks) { result in
+                        if case .failure(let error) = result {
+                            fatalError(error.localizedDescription)
+                        }
                     }
                 }
-            }
-            .onAppear {
-                FlashcardStore.load { result in
-                    switch result {
-                    case .failure(let error):
-                        fatalError(error.localizedDescription)
-                    case .success(let flashcards):
-                        store.flashcards = flashcards
+                .onAppear {
+                    FlashcardStore.load { result in
+                        switch result {
+                        case .failure(let error):
+                            fatalError(error.localizedDescription)
+                        case .success(let flashcardDecks):
+                            store.flashcardDecks = flashcardDecks
+                        }
                     }
                 }
             }
